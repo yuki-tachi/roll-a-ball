@@ -10,7 +10,7 @@ public class DangerWall : MonoBehaviour
 
     void OnCollisionEnter(Collision hit)
     {
-        if (hit.gameObject.CompareTag("Player"))
+        if (hit.gameObject.CompareTag("Puck"))
         {
 
             var hitPos = hit.contacts[0].point;
@@ -22,6 +22,15 @@ public class DangerWall : MonoBehaviour
             // Destroy(this.gameObject);
         }
     }
+
+    // void OnTriggerEnter(Collider hit)
+    // {
+    //     if (hit.CompareTag("Puck"))
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
+
     public void OnDestroyBySelf()
     {
         Debug.Log("OnDestroyBySelf");
