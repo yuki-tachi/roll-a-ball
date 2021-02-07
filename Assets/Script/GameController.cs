@@ -51,9 +51,8 @@ public class GameController : MonoBehaviour
 
     async void Start()
     {
-        await Task.Delay(2000);
         this.cts = new CancellationTokenSource();
-        _ = this.ChangeGameState(GameState.ready);
+        await this.ChangeGameState(GameState.ready);
     }
 
     public async Task SetCurrentState(GameState state)
