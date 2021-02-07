@@ -2,6 +2,8 @@
 
 ## サンプルビルド
 https://yuki-tachi.github.io/roll-a-ball/webgl/
+await/asyncがwebgl版では動かないらしい...
+https://forum.unity.com/threads/async-await-and-webgl-builds.472994/
 
 ## プレイヤーを動かす際に使うmethod
 
