@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Vector2 FieldSize;
-
-    public float speed = 1;
+    [SerializeField] Joystick Joystick;
+    [SerializeField] public float speed = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +18,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        var x = Input.GetAxis("Horizontal");
-        var z = Input.GetAxis("Vertical");
-        var rigidbody = GetComponent<Rigidbody>();
-        var posX = Mathf.Clamp(rigidbody.position.x + (x * speed * Time.deltaTime), -FieldSize.x / 2f, FieldSize.x / 2f);
-        var posZ = Mathf.Clamp(rigidbody.position.z + (z * speed * Time.deltaTime), -FieldSize.y / 2f, 0);
+        var rb = GetComponent<Rigidbody>();
+        Vector3 direction = Vector3.forward * Joystick.Vertical + Vector3.right * Joystick.Horizontal;
+        // this.gameObject.transform.position += direction * speed * Time.fixedDeltaTime;
 
-        rigidbody.MovePosition(new Vector3(posX, 0, posZ));
+        var posX = Mathf.Clamp(rb.position.x + (direction.x * speed * Time.fixedDeltaTime), -FieldSize.x / 2f, FieldSize.x / 2f);
+        var posZ = Mathf.Clamp(rb.position.z + (direction.z * speed * Time.fixedDeltaTime), -FieldSize.y / 2f, 0);
+        rb.MovePosition(new Vector3(posX, 0, posZ));
+        // rb.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
     }
 }
