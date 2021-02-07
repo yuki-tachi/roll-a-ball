@@ -49,10 +49,10 @@ public class GameController : MonoBehaviour
         _instance = this;
     }
 
-    void Start()
+    async void Start()
     {
+        await Task.Delay(2000);
         this.cts = new CancellationTokenSource();
-
         _ = this.ChangeGameState(GameState.ready);
     }
 
@@ -81,6 +81,7 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case GameState.ready:
+
                 this.PlayerCurrentLife = this.PlayerMaxLife;
 
                 this.readyLabelObject.GetComponent<Text>().text = "Ready";
@@ -98,6 +99,10 @@ public class GameController : MonoBehaviour
                 await this.ChangeGameState(GameState.play);
                 break;
             case GameState.damage:
+                if (this.cts.IsCancellationRequested)
+                {
+                    return;
+                }
                 this.readyLabelObject.GetComponent<Text>().text = "Retry";
                 this.readyLabelObject.SetActive(true);
 

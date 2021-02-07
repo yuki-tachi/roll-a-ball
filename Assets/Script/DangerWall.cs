@@ -36,21 +36,4 @@ public class DangerWall : MonoBehaviour
         Debug.Log("OnDestroyBySelf");
         GameObject.Destroy(this);
     }
-
-    private void retry()
-    {
-        var sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(sceneIndex);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
