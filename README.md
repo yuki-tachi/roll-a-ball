@@ -1,6 +1,5 @@
 # roll-a-ball
-
-https://user-images.githubusercontent.com/43042148/111053713-7e67bf80-84a9-11eb-8e30-3a61bf236732.mov
+![output](https://user-images.githubusercontent.com/43042148/111053761-f33af980-84a9-11eb-83cb-d4d6af072096.gif)
 
 ## サンプルビルド
 https://yuki-tachi.github.io/roll-a-ball/webgl/
